@@ -1,0 +1,83 @@
+/* 首页自定义分类卡片样式 */
+.custom-category-card {
+    margin-top: 20px;
+    padding: 20px;
+    background: #fff; /* 默认白底 */
+    border-radius: 12px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+  }
+  
+  [data-theme="dark"] .custom-category-card {
+    background: #1e1e1e; /* 夜间模式底色 */
+  }
+  
+  .category-card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .category-card-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* 间距 */
+  }
+  
+  .category-card-item {
+    flex: 1 1 calc(50% - 15px); /* 一行两列 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: #f7f9fe; /* 卡片微灰色背景 */
+    border-radius: 8px;
+    text-decoration: none !important;
+    color: #333 !important;
+    transition: all 0.3s;
+    border-left: 5px solid #49b1f5; /* 左侧蓝色条纹 */
+  }
+  
+  /* 手机端强制一列 */
+  @media screen and (max-width: 768px) {
+    .category-card-item {
+      flex: 1 1 100%;
+    }
+  }
+  
+  /* 悬停效果 */
+  .category-card-item:hover {
+    background: #49b1f5;
+    color: #fff !important;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(73, 177, 245, 0.4);
+  }
+  
+  .category-card-item:hover .category-count {
+    background: #fff;
+    color: #49b1f5;
+  }
+  
+  .category-name {
+    font-weight: bold;
+  }
+  
+  .category-count {
+    background: #eef2f5;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  [data-theme="dark"] .category-card-item {
+    background: #2c2c2c;
+    color: #eee !important;
+    border-left: 5px solid #3ecdf1;
+  }
+  [data-theme="dark"] .category-count {
+    background: #444;
+    color: #ddd;
+  }

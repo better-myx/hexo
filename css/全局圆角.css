@@ -1,0 +1,102 @@
+/******************** 全局圆角 ***********************/
+/* 首页文章卡片圆角 */
+#recent-posts .recent-post-item {
+    border-radius: 20px; /* 添加圆角效果，数值可按需调整 */
+  }
+  
+  /* 文章页目录卡片圆角 */
+  #aside-content .card-widget {
+    border-radius: 20px;
+  }
+  
+  /* 文章正文圆角 */
+  #post {
+    border-radius: 20px;
+  }
+  
+  /* 文章图片圆角 */
+  .container img {
+    border-radius: 20px;
+  }
+  
+  /* 相关文章卡片 */
+  #post .pagination-related {
+    border-radius: 20px;
+    border: var(--mobufan-border-style) !important; /* 边框装饰线颜色 */
+  }
+  
+  /* 文章相关推荐卡片圆角 */
+  
+  /*.relatedPosts > .relatedPosts-list > div {*/
+  /*  border-radius: 20px;*/
+  /*}*/
+  /*#aside-content #card-toc .toc-content .toc-link.active {*/
+  /*  border-radius: 5px;*/
+  /*}*/
+  
+  /* 文章上下篇卡片圆角 */
+  #pagination .pagination-post {
+    border-radius: 20px;
+    border: var(--mobufan-border-style) !important; /* 边框装饰线颜色 */
+  }
+  
+  /* 文字代码框圆角 */
+  #post .highlight {
+    border-radius: 20px;
+  }
+  
+  /*************（友链+归档+分类+便签）圆角 *****************/
+  #page {
+    border-radius: 20px;
+  }
+  
+  /* 分类子页面圆角 */
+  #category {
+    border-radius: 20px;
+  }
+  
+  /* 标签子页面圆角 */
+  #tag {
+    border-radius: 20px;
+  }
+  
+  /* 归档子页面圆角 */
+  div#archive {
+    border-radius: 20px;
+  }
+  
+  /* 导航栏子菜单圆角 */
+  .menus_item_child, .site-page.child.faa-parent.animated-hover {
+    border-radius: 20px !important; /* 确保悬停时圆角效果存在 */
+  }
+  .menus_item_child, .site-page.child.faa-parent.animated-hover:hover {
+    border-radius: 20px !important; /* 确保悬停时圆角效果存在 */
+  }
+  
+  /* 搜索框圆角 */
+  .search-dialog {
+    border-radius: 20px; /* 设置圆角边框 */
+  }
+  
+  /* 评论输入框圆角*/
+  #twikoo .tk-comments .tk-submit .tk-row .tk-col .tk-input.el-textarea .el-textarea__inner {
+    border-radius: 15px; /* 设置圆角边框 */
+  }
+  /* 评论预览圆角 */
+  .el-button.tk-preview.el-button--default.el-button--small {
+    border-radius: 10px; /* 设置圆角边框 */
+  }
+  /* 评论发送圆角 */
+  .el-button.tk-send.el-button--primary.el-button--small.is-disabled {
+    border-radius: 10px; /* 设置圆角边框 */
+  }
+  
+  /* md 表格 */
+  .table-container .table-wrap table {
+    border-radius: 10px; /* 设置圆角边框 */
+  }
+  
+  /* 标签外挂 */
+  #post .container.post-content .folding-tag, #post .container.post-content .folding-tag .content, #post .container.post-content .folding-tag .content, summary {
+    border-radius: 20px !important; /* 圆角 */
+  }

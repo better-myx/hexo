@@ -1,0 +1,124 @@
+/* ================= 1. 导航栏 (一体化修正) ================= */
+svg.icon { width: 1.2em; height: 1.2em; vertical-align: -0.15em; fill: currentColor; overflow: hidden; }
+
+/* 
+   1.1 导航栏容器 
+   平时透明，滚动固定后(nav-fixed)才显示背景
+*/
+#nav {
+  height: 60px; display: flex; align-items: center;
+  justify-content: space-between; position: relative; padding: 0 20px;
+  /* 确保最外层容器平时透明 */
+  background: transparent !important;
+}
+@media screen and (min-width: 768px) { #nav { padding: 0 60px; } }
+
+/* 
+   1.2 固定后的样式 (统一大背景)
+   核心修正：直接使用 RGB 变量构建背景，确保和卡片完全一致
+*/
+#page-header.nav-fixed #nav {
+  background-color: rgba(var(--card-rgb), var(--card-opacity)) !important; /* 和卡片一致 */
+  backdrop-filter: var(--backdrop-filter) !important;
+  -webkit-backdrop-filter: var(--backdrop-filter) !important;
+  box-shadow: 0 5px 12px -5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+/* 
+   1.3 子元素背景清理 (关键) 
+   强制所有内部元素透明，只显示最外层 #nav 的背景
+*/
+#blog-info, #nav-right, #menus, #menus .menus_items {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* 左侧 Logo */
+#blog-info { flex: 0 0 auto; display: flex; align-items: center; height: 100%; max-width: 60%; }
+#blog-info .site-name { font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+@media screen and (min-width: 768px) { #blog-info .site-name { font-size: 1.45rem; } }
+@media screen and (max-width: 768px) { #blog-info .site-name { font-size: 1.1rem; } }
+#blog-info .site-icon { width: 40px; height: 40px; margin-right: 8px; border-radius: 50%; vertical-align: middle; transition: transform 0.5s; }
+#blog-info .site-icon:hover { transform: rotate(360deg); }
+
+/* 中间菜单 */
+@media screen and (min-width: 768px) {
+  #menus .menus_items {
+      position: absolute; left: 50%; transform: translateX(-50%);
+      display: flex; align-items: center; justify-content: center; height: 100%;
+  }
+  #menus .menus_item > a.site-page {
+      font-size: 1.4rem; font-weight: bold; padding: 0 15px; display: flex; align-items: center; height: 100%; transition: color 0.3s;
+  }
+  #menus .menus_item > a.site-page:hover { color: var(--theme-color) !important; }
+  #menus .menus_item > a.site-page svg.icon { width: 1.1em; height: 1.1em; margin-right: 6px; margin-top: -3px; }
+}
+
+/* 右侧工具栏 */
+#nav-right { display: flex; align-items: center; justify-content: flex-end; height: 100%; gap: 12px; }
+@media screen and (min-width: 768px) { #nav-right { gap: 15px; } }
+#nav-right .site-page:hover svg.icon, #nav-right .sun_moon:hover svg.icon { transform: scale(1.15); color: var(--theme-color); }
+
+/* 二级菜单 (下拉框) */
+#nav .menus_item { position: relative !important; }
+#nav .menus_item_child {
+  position: absolute !important; left: 50% !important; transform: translateX(-50%) !important; top: 100% !important;
+  width: max-content; min-width: 140px; border-radius: 0 0 8px 8px; padding: 8px 12px;
+  display: none; flex-direction: row; justify-content: center; align-items: center; gap: 10px;
+  box-shadow: 0 5px 20px -4px rgba(0, 0, 0, 0.2); list-style: none;
+}
+#nav .menus_item:hover .menus_item_child { display: flex !important; }
+[data-theme='light'] #nav .menus_item_child { background-color: rgba(255, 255, 255, 0.95); }
+[data-theme='light'] #nav .menus_item_child li a:hover { color: var(--theme-color) !important; }
+[data-theme='dark'] #nav .menus_item_child { background-color: rgba(30, 30, 30, 0.9); }
+
+/* 明暗图标 */
+[data-theme='light'] #nightmode-button .icon-moon { display: inline-block; }
+[data-theme='light'] #nightmode-button .icon-sun  { display: none; }
+[data-theme='dark'] #nightmode-button .icon-moon { display: none; }
+[data-theme='dark'] #nightmode-button .icon-sun  { display: inline-block; fill: #f1c40f; }
+
+
+/* ================= 2. 回到顶部按钮 (CSS) ================= */
+#go-up i { display: block; font-size: 16px; }
+#go-up .scroll-percent { display: none; }
+
+#go-up.show-percent i { display: none !important; }
+#go-up.show-percent .scroll-percent { 
+    display: block !important; 
+    font-size: 12px; 
+    font-weight: bold;
+    line-height: 30px; 
+}
+
+/* ================= 3. APlayer 样式 ================= */
+.aplayer {
+  background: rgba(255, 255, 255, 0.60) !important;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 1px 5px 0 rgba(0, 0, 0, .1);
+  position: relative; border-radius: 10px !important;
+}
+.aplayer.aplayer-fixed .aplayer-body {
+  background: rgba(255, 255, 255, 0.60) !important;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .07), 0 1px 5px 0 rgba(0, 0, 0, .1);
+  position: fixed; border-radius: 6px !important;
+}
+.aplayer-list, .aplayer-info { backdrop-filter: blur(3px); }
+.aplayer .aplayer-list ol::-webkit-scrollbar { width: 5px; }
+.aplayer .aplayer-list ol::-webkit-scrollbar-thumb { border-radius: 3px; background-color: #b0e1ff; }
+.aplayer .aplayer-list ol li:hover { background: #b0e1ff !important; }
+.aplayer .aplayer-list ol li.aplayer-list-light { background: #ffdffa !important; }
+
+[data-theme=dark] .aplayer, 
+[data-theme=dark] .aplayer.aplayer-fixed .aplayer-body {
+  background: rgba(22, 22, 22, 0.60) !important;
+  color: rgb(255, 255, 255);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .07), 0 1px 5px 0 rgba(0, 0, 0, .1);
+}
+[data-theme=dark] .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon path { fill: #d4d4d4; }
+[data-theme=dark] .aplayer .aplayer-list ol li:hover { background: #407290 !important; }
+[data-theme=dark] .aplayer .aplayer-list ol li.aplayer-list-light { background: #9c8098 !important; }
+[data-theme=dark] .aplayer .aplayer-info .aplayer-controller .aplayer-time { color: #d4d4d4; }
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body { left: -66px !important; transition: 0.28s !important; }
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover { left: 0 !important; }

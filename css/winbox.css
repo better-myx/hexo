@@ -1,0 +1,157 @@
+/* ================= 1. 全局变量定义 ================= */
+:root {
+    /* --- 1.1 用户自定义颜色表 --- */
+    --blue-custom: #5ea6e5;
+    --loading-color: rgba(207, 246, 247, 0.92);
+    --border-color: #c9c9c9;
+    --color-red: rgb(241, 71, 71);
+    --color-orange: rgb(241, 162, 71);
+    --color-yellow: rgb(241, 238, 71);
+    --color-purple: rgb(179, 71, 241);
+    --color-blue: rgb(102, 204, 255);
+    --color-gray: rgb(226, 226, 226);
+    --color-green: rgb(57, 197, 187);
+    --color-whitegray: rgb(241, 241, 241);
+    --color-pink: rgb(237, 112, 155);
+    --color-black: rgb(0, 0, 0);
+    --color-darkblue: rgb(97, 100, 159);
+    --color-heoblue: rgb(66, 90, 239);
+  
+    /* --- 1.2 核心动态变量 (由 JS 控制) --- */
+    --theme-color: #42c6b6; 
+    --card-opacity: 0.95; /* JS控制: 0=1(不透明), 100=0(全透明) */
+    --card-blur: 0px;
+    
+    /* --- 1.3 映射 Butterfly 常用变量 --- */
+    --btn-bg: var(--theme-color) !important;
+    --scrollbar-color: var(--theme-color) !important;
+    --text-highlight-color: var(--theme-color) !important;
+    --link-hover-color: var(--theme-color) !important;
+    
+    /* --- 1.4 样式构建 (修复卡片颜色) --- */
+    /* 
+       关键修正：这里强制使用纯白/纯黑 RGB 值，
+       绝对不使用 var(--theme-color)，解决卡片变绿问题
+    */
+    --trans-light: rgba(255, 255, 255, var(--card-opacity));
+    --border-style: 1px solid rgba(169, 169, 169, 0.4);
+    --backdrop-filter: blur(var(--card-blur));
+    --global-bg: url('/hexo/img/light.png');
+  
+    /* --- 1.5 遮罩设置 (调暗) --- */
+    /* 白天遮罩: 0.25 (稍微暗一点，保证文字清晰) */
+    --mask-light: rgba(0, 0, 0, 0.2); 
+  }
+  
+  [data-theme="dark"] {
+    /* 黑夜变量覆盖 */
+    /* 关键修正：黑夜强制纯黑背景 */
+    --trans-dark: rgba(0, 0, 0, var(--card-opacity));
+    --border-style: 1px solid rgba(255, 255, 255, 0.1);
+    /* 黑夜遮罩: 0.6 */
+    --mask-dark: rgba(0, 0, 0, 0.7); 
+  }
+  
+  /* ================= 2. 基础背景与遮罩 ================= */
+  body {
+      background: var(--global-bg) !important;
+      background-size: cover !important;
+      background-attachment: fixed !important;
+      background-position: center center !important;
+      transition: background-image 0.5s ease;
+  }
+  #web_bg { display: none !important; }
+  
+  /* 清除默认背景 */
+  #page-header, #footer { background: transparent !important; }
+  
+  /* --- 白天模式：头尾遮罩 --- */
+  [data-theme="light"] #page-header::before,
+  [data-theme="light"] #footer::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: var(--mask-light) !important;
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  /* --- 夜间模式：全屏统一遮罩 --- */
+  [data-theme="dark"] #page-header::before,
+  [data-theme="dark"] #footer::before { display: none; }
+  
+  [data-theme="dark"] body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-color: var(--mask-dark) !important;
+      z-index: -2;
+      pointer-events: none;
+  }
+  
+  /* ================= 3. 通用组件样式 (强制应用) ================= */
+  /* 
+     这里使用 !important 强制覆盖任何可能导致卡片变绿的主题样式
+  */
+  
+  /* 白天卡片 */
+  #recent-posts > .recent-post-item,
+  #aside-content .card-widget,
+  div#post, div#page, div#archive, div#tag, div#category,
+  .layout > .recent-posts .pagination > .page-number,
+  .layout > .recent-posts .pagination > .extend {
+    background: var(--trans-light) !important; /* 纯白半透明 */
+    backdrop-filter: var(--backdrop-filter);
+    -webkit-backdrop-filter: var(--backdrop-filter);
+    border-radius: 15px;
+    border: var(--border-style);
+    transition: all 0.3s;
+  }
+  
+  /* 夜间卡片 */
+  [data-theme="dark"] #recent-posts > .recent-post-item,
+  [data-theme="dark"] #aside-content .card-widget,
+  [data-theme="dark"] div#post,
+  [data-theme="dark"] div#archive,
+  [data-theme="dark"] div#page,
+  [data-theme="dark"] div#tag,
+  [data-theme="dark"] div#category,
+  [data-theme="dark"] .layout > .recent-posts .pagination > .page-number,
+  [data-theme="dark"] .layout > .recent-posts .pagination > .extend {
+    background: var(--trans-dark) !important; /* 纯黑半透明 */
+  }
+  
+  /* 右下角按钮强制主题色 */
+  #rightside > div > button, 
+  #rightside > div > a {
+      background-color: var(--theme-color) !important;
+      color: #fff !important;
+      border-radius: 50%;
+  }
+  #rightside > div > button:hover, 
+  #rightside > div > a:hover {
+      background-color: var(--theme-color) !important;
+      filter: brightness(1.1);
+  }
+  
+  /* ================= 4. 设置面板 UI (不变) ================= */
+  #settings-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 998; display: none; opacity: 0; transition: opacity 0.3s; backdrop-filter: blur(3px); }
+  #settings-overlay.show { display: block; opacity: 1; }
+  #settings-panel { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9); width: 420px; max-width: 90%; background: rgba(255, 255, 255, 0.95); border-radius: 12px; box-shadow: 0 15px 30px rgba(0,0,0,0.25); z-index: 999; opacity: 0; pointer-events: none; transition: all 0.3s; overflow: hidden; }
+  [data-theme="dark"] #settings-panel { background: rgba(30, 30, 30, 0.95); color: #eee; }
+  #settings-panel.show { opacity: 1; pointer-events: all; transform: translate(-50%, -50%) scale(1); }
+  .panel-header { background: var(--theme-color); padding: 15px 20px; color: white; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+  .close-btn { cursor: pointer; }
+  .panel-body { padding: 20px; }
+  .setting-item { margin-bottom: 20px; }
+  .title-group { display: flex; justify-content: space-between; margin-bottom: 5px; font-weight: bold; }
+  .desc { font-size: 12px; color: #888; margin-bottom: 10px; }
+  input[type=range] { -webkit-appearance: none; width: 100%; height: 6px; background: #e0e0e0; border-radius: 3px; outline: none; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; background: var(--theme-color); border-radius: 50%; cursor: pointer; border: 2px solid #fff; }
+  .color-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+  .color-btn { width: 25px; height: 25px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: transform 0.2s; }
+  .color-btn:hover { transform: scale(1.1); }
+  .color-btn.active { border-color: #333; transform: scale(1.2); }
+  [data-theme="dark"] .color-btn.active { border-color: #fff; }
+  #btn-reset { width: 100%; padding: 10px; background: var(--theme-color); color: white; border: none; border-radius: 20px; cursor: pointer; font-weight: bold; }
+  

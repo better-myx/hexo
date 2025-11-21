@@ -1,0 +1,102 @@
+/* --- 1. 页脚容器基础设置 --- */
+#footer {
+    /* 确保页脚本身没有默认背景颜色干扰 */
+    background: transparent !important;
+    box-shadow: none !important;
+    transition: background 0.3s;
+}
+
+#footer-wrap {
+    padding: 20px 0 !important;
+    color: #fff !important; /* 强制文字白色 */
+}
+
+/* 强制隐藏主题默认的版权信息 (如果有残留) */
+#footer-wrap .copyright,
+#footer-wrap .framework-info {
+    display: none !important;
+}
+
+/* --- 2. 关键：背景透明度逻辑 --- */
+
+/* 【亮色模式】半透明 (磨砂玻璃效果) */
+[data-theme="light"] #footer {
+    /* 白色背景，透明度 0.1 (很透)，配合模糊滤镜 */
+    background-color: rgba(255, 255, 255, 0.1) !important; 
+    backdrop-filter: blur(5px); /* 毛玻璃模糊 */
+    -webkit-backdrop-filter: blur(5px);
+    border-top: 1px solid rgba(255, 255, 255, 0.2); /* 顶部加一条淡淡的白线增加质感 */
+}
+
+/* 【暗色模式】全透明 */
+[data-theme="dark"] #footer {
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+}
+
+/* --- 3. 胶囊徽标样式 (复刻参考图) --- */
+.footer-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-bar {
+    display: inline-flex;
+    border-radius: 4px;
+    overflow: hidden;
+    font-size: 13px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 5px;
+}
+
+.status-left {
+    background-color: #2c2c2c; /* 黑底 */
+    color: #fff; /* 白字 */
+    padding: 4px 10px;
+    display: flex;
+    align-items: center;
+}
+
+.status-right {
+    background-color: #fff; /* 白底 */
+    color: #000; /* 黑字 */
+    padding: 4px 10px;
+    display: flex;
+    align-items: center;
+}
+
+/* --- 4. 运行时间与旅行者 --- */
+.footer-line {
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6); /* 加重阴影，保证在亮色半透明背景下也能看清白字 */
+}
+
+.time-bold {
+    font-weight: 800;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0 4px;
+    font-size: 15px;
+}
+
+/* 心跳 */
+.footer-heart {
+    color: #ff0000;
+    animation: heartBeat 1.2s ease-in-out infinite;
+    margin-left: 5px;
+    display: inline-block;
+}
+
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.2); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.2); }
+    60% { transform: scale(1); }
+}

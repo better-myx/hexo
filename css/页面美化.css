@@ -1,0 +1,662 @@
+/****************************** 定义全局颜色 ****************************/
+:root {
+    --menmoran-beijing: rgba(25, 25, 25, 0.2); /* 日间模式，背景颜色 */
+    --menmoran-fontcolor: #ffffff; /* 日间模式，字体颜色*/
+    --menmoran-border: 1px solid #e0e0e0; /* 边框样式（白色实线） */
+    --menmoran-shadow-border: 0 4px 12px 0 rgb(47, 255, 0), 0 1px 3px 0 rgba(0, 0, 0, 0.2); /* 边框阴影效果悬浮感的立体光影效果 */
+    --menmoran-text-shadow: 0 0 5px rgba(255, 255, 255, 0.8); /* 日间模式，文字阴影效果 */
+    --menmoran-border-style: 1.2px solid rgb(169, 169, 169); /* 边框装饰线颜色 */
+    --menmoran-backdrop-filter: blur(6px) saturate(150%); /* 磨砂效果（模糊+饱和度） */
+    --menmoran-color: #ffb800; /* 悬停时文字颜色变为黄色 */
+    --menmoran-white: #ffffff; /* 白色字体 */
+    --menmoran-hangneidaima: #00fdf6; /* 文章行内代码文字颜色 */
+    --menmoran-waigua: #ffffff; /* 日间模式，字体颜色*/
+    --menmoran-jianbian: linear-gradient(to right, #00075ef2, #2c0364, #003300, #330000); /* 渐变颜色*/
+    /*--menmoran-lighttext: #6c757d; !* 浅色文字（灰色） *!*/
+    /*--menmoran-dark: rgba(25, 25, 25, 0.2); !* 夜间模式背景颜色 *!*/
+    /*--menmoran-touming: rgba(25, 25, 25, 0); !* 透明背景颜色 *!*/
+  }
+  
+  /********* 明亮模式颜色配置 *********/
+  [data-theme="light"] {
+    --menmoran-beijing: rgba(0 228 196 / 72%); /* 日间模式，背景颜色 */
+    /*--menmoran-beijing: linear-gradient(to right, #3a6a82, #5d7480, #1a5e80, #005a86); !* 日间模式，背景颜色 *!*/
+    --menmoran-fontcolor: #ffffff; /* 日间模式，字体颜色*/
+    --menmoran-border: 1px solid #e0e0e0; /* 边框样式（浅灰色实线） */
+    --menmoran-shadow-border: 0 4px 12px 0 rgb(174 1 105), 0 1px 3px 0 rgba(0, 0, 0, 0.2); /* 边框阴影效果悬浮感的立体光影效果 */
+    --menmoran-text-shadow: 0 0 5px rgb(183 0 110); /* 日间模式，文字阴影效果 */
+    --menmoran-border-style: 1.2px solid rgb(255, 158, 0); /* 边框装饰线颜色 */
+    --menmoran-backdrop-filter: blur(6px) saturate(150%); /* 磨砂效果（模糊+饱和度） */
+    --menmoran-color: #ffb800; /* 悬停时边框颜色变为黄色 */
+    --menmoran-white: #ffffff; /* 白色字体 */
+    --menmoran-hangneidaima: rgb(255, 0, 153); /* 文章行内代码文字颜色 */
+    --menmoran-waigua: rgba(0, 0, 0, 0.63); /* 日间模式，字体颜色*/
+    --menmoran-jianbian: linear-gradient(to right, #ffb4b4, #0082a9, #007057, #df5fff); /* 渐变颜色*/
+    /*--menmoran-lighttext: #007dd0; !* 文章TOC字体颜色 *!*/
+    /*--menmoran-dark: rgba(25, 25, 25, 0.2);*/
+    /*--menmoran-touming: rgba(25, 25, 25, 0); !* 透明背景颜色 *!*/
+  }
+  
+  /********* 暗色模式颜色配置 *********/
+  [data-theme="dark"] {
+    --menmoran-beijing: rgba(25, 25, 25, 0.8); /* 日间模式背景颜色 */
+    --menmoran-fontcolor: #212529; /* 日间模式，字体颜色*/
+    --menmoran-border: 1px solid #e0e0e0; /* 边框样式（浅灰色实线） */
+    --menmoran-shadow-border: 0 4px 12px 0 rgb(20 109 0 / 90%), 0 1px 3px 0 rgba(0, 0, 0, 0.2); /* 边框阴影效果悬浮感的立体光影效果 */
+    --menmoran-text-shadow: 0 0 5px rgb(40 221 0); /* 日间模式，文字阴影效果 */
+    --menmoran-border-style: 1.2px solid rgb(169, 169, 169); /* 边框装饰线颜色 */
+    --menmoran-backdrop-filter: blur(6px) saturate(150%); /* 磨砂效果（模糊+饱和度） */
+    --menmoran-color: #ffb800; /* 悬停时边框颜色变为黄色 */
+    --menmoran-white: #ffffff; /* 白色字体 */
+    --menmoran-hangneidaima: rgb(47, 255, 0); /* 文章行内代码文字颜色 */
+    --menmoran-waigua: #ffffff; /* 日间模式，字体颜色*/
+    --menmoran-jianbian: linear-gradient(to right, #00075ef2, #2c0364, #003300, #330000); /* 渐变颜色*/
+    /*--menmoran-lighttext: #007dd0; !* 文章TOC字体颜色 *!*/
+    /*--menmoran-dark: rgba(25, 25, 25, 0.2);*/
+    /*--menmoran-touming: rgba(25, 25, 25, 0); !* 透明背景颜色 *!*/
+  }
+  
+  /************************ 背景颜色+边框装饰线+磨砂效果 ************************/
+  /*#to_comment .fas.fa-comments, !* 右下角明暗模式，评论 *!*/
+  /*#rightside-config-hide .icon-V.hidden, !* 右下角明暗模式 *!*/
+  #post .container.post-content .folding-tag, /* 标签外挂 */
+  #post .container.post-content .folding-tag .content,  /* 标签外挂 */
+  #post .container.post-content .folding-tag .content, summary, /* 标签外挂 */
+  #rightside > div > button, /* 右下角明暗模式，评论 */
+  #rightside > div > a, /* 右下角明暗模式，评论 */
+  #pagination .page-number, /* 文章分页2 */
+  #pagination .extend.next, /* 文章分页1 */
+  .search-dialog, /* 搜索框 */
+  #tag, /* 标签子页面卡片 */
+  #category, /* 分类子页面卡片 */
+  #recent-posts .recent-post-item, /* 首页文章卡片 */
+  #aside-content .card-widget, /* 首页侧栏卡片 */
+  div#post, /* 文章页卡片 */
+  div#archive, /* 归档页卡片 */
+    /* 普通页卡片 */
+  div#page {
+    background: var(--menmoran-beijing) !important; /* 背景颜色 */
+    backdrop-filter: var(--menmoran-backdrop-filter) !important; /* 磨砂效果（模糊+饱和度） */
+    border: var(--menmoran-border-style) !important; /* 边框装饰线颜色 */
+  }
+  
+  /* 鼠标悬停，网页所有元素背景透明 */
+  
+  /**:hover {*/
+  /*  background-color: transparent !important;*/
+  /*  transition: background-color 0.3s ease; !* 添加过渡效果 *!*/
+  /*}*/
+  /** {*/
+  /*  background-color: transparent !important;*/
+  /*  transition: background-color 0.3s ease; !* 添加过渡效果 *!*/
+  /*}*/
+  
+  /********************** 鼠标悬停，文字颜色 ***************************/
+  .aside-list-item .title:hover, /* 侧边栏-最近文章 */
+  .card-tag-cloud a:hover {
+    /* 侧边栏-标签云：.card-tag-cloud a */
+    color: var(--menmoran-hangneidaima) !important; /* 鼠标悬停，文字颜色*/
+  }
+  
+  /*************************** 导航栏美化 ****************************/
+  /********** 一级菜单居中 **********/
+  #nav .menus_items {
+    position: absolute !important;
+    width: fit-content !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    top: 12px !important; /* 向下移动 */
+  }
+  
+  /********* 子菜单横向展示 *********/
+  #nav .menus_items .menus_item:hover .menus_item_child {
+    display: flex;
+  }
+  /* 这里的2是代表导航栏的第2个元素，即有子菜单的元素，可以按自己需求修改 */
+  .menus_items .menus_item:nth-child(2) .menus_item_child {
+    left: -125px;
+  }
+  
+  /********* 去除导航栏选项中底下的蓝条 *********/
+  #nav *::after{
+    background-color: transparent!important;
+  }
+  
+  /********* 调整导航栏（图标大小和文字颜色）*********/
+  .site-page svg {
+    width: 1.8em; /* 调整（导航栏图标）的宽度 */
+    height: 1.8em; /* 调整（导航栏图标）的高度 */
+    vertical-align: middle; /* 默认居中对齐 */
+    vertical-align: -0.3em; /* 向上移动 */
+  }
+  .site-page span {
+    font-size: 1.38em; /* 调整（导航栏文字）大小 */
+    color: var(--menmoran-white); /* 调整（导航栏文字）颜色 */
+    vertical-align: 0.01em; /* 向上移动 */
+  }
+  .site-name {
+    font-size: 1.8em; /* 调整（站点标题文字）大小 */
+    color: var(--menmoran-white); /* 调整（站点标题文字）颜色 */
+  }
+  
+  /* 导航栏文字加粗和间距调整*/
+  #menus > div.menus_items > div > a {
+    /* 调整文字大小 */
+    /*font-size: 14px; !* 或其他值，如 16px、1.2rem 等 *!*/
+    letter-spacing: .1rem;
+    font-weight: 600;
+    padding: 0 .1em 0 0.1em;
+    height: 30px;
+    line-height: 30px;
+    /* 重置过渡动画（如果需要） */
+    -webkit-transition: color 0s !important;
+    -moz-transition: color 0s !important;
+    -o-transition: color 0s !important;
+    -ms-transition: color 0s !important;
+    transition: color 0s !important;
+  }
+  
+  /********* 导航栏菜单鼠标移入字体放大 *********/
+  .site-name:hover {
+    font-size: 40px; /*导航栏（站点标题）文字图标*/
+    background: var(--menmoran-beijing) !important; /* 日间模式导航栏（主菜单）背景颜色 */
+    transition: transform 0.3s ease; /* 平滑过渡效果 */
+  }
+  
+  /*.menus_item:hover {*/
+  /*  font-size: 16px; !*导航栏（主菜单）文字图标*!*/
+  /*  background: var(--menmoran-beijing) !important; !* 日间模式导航栏（主菜单）背景颜色 *!*/
+  /*  transition: transform 0.3s ease; !* 平滑过渡效果 *!*/
+  /*}*/
+  
+  /********* 导航栏（主菜单）背景颜色 *********/
+  #page-header.nav-fixed #nav {
+    background: var(--menmoran-beijing) !important; /* 日间模式导航栏（主菜单）背景颜色 */
+    backdrop-filter: var(--menmoran-backdrop-filter) !important; /* 磨砂效果（模糊+饱和度） */
+  }
+  
+  /******************************* 导航栏（子菜单）背景颜色 ****************************/
+  .menus_item_child,
+  .site-page.child.faa-parent.animated-hover {
+    background-color: var(--menmoran-beijing) !important; /* 设置元素的背景颜色 */
+    /* backdrop-filter: var(--menmoran-backdrop-filter) !important; /* 磨砂效果（模糊+饱和度） */ */
+    transition: background-color 0.3s ease !important; /* 日间模式，添加（子菜单）过渡效果 */
+  }
+  
+  #nav .menus_items .menus_item .menus_item_child li:hover {
+    background-color: var(--menmoran-beijing) !important;
+    transition: background-color 0.3s ease; /* 添加过渡效果 */
+    border: var(--menmoran-border-style) !important; /* 边框装饰线颜色 */
+    box-shadow: var(--menmoran-shadow-border) !important; /* 添加阴影效果 */
+  }
+  
+  /* 为导航菜单中的子菜单项设置样式 */
+  #nav .menus_items .menus_item .menus_item_child li {
+    background-color: var(--menmoran-beijing) !important;
+    /* 设置元素的圆角半径为 50px，实现圆形效果 */
+    border-radius: 16px;
+    /* 为所有属性的变化添加过渡动画，持续时间为 0.3 秒 */
+    -webkit-transition: all .3s; /* 兼容 Webkit 内核浏览器（如 Chrome、Safari） */
+    -moz-transition: all .3s;    /* 兼容 Gecko 内核浏览器（如 Firefox） */
+    -o-transition: all .3s;      /* 兼容 Opera 浏览器 */
+    -ms-transition: all .3s;     /* 兼容 IE 浏览器 */
+    transition: all .3s;         /* 标准语法，适用于现代浏览器 */
+    /* 将元素以行内块级元素的方式显示，允许设置宽度和高度 */
+    display: inline-block;
+    /* 设置元素左右外边距为 2px，增加间距 */
+    margin: 0 2px;
+    list-style: none; /* 移除导航菜单子项的默认列表样式 */
+    border: var(--menmoran-border-style) !important; /* 边框装饰线颜色 */
+  }
+  
+  /* 清除导航栏元素最底层背景*/
+  #nav .menus_items .menus_item .menus_item_child {
+    background-color: transparent!important;
+  }
+  
+  /* 设置导航菜单子项的第一个子元素的上边框为圆角 */
+  #nav .menus_items .menus_item .menus_item_child li:first-child {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  
+  }
+  
+  /* 设置导航菜单子项的最后一个子元素的下边框为圆角 */
+  #nav .menus_items .menus_item .menus_item_child li:last-child {
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+  
+  /* 设置导航菜单子项中的链接样式 */
+  #nav .menus_items .menus_item .menus_item_child li a {
+    display: inline-block; /* 将链接设置为内联块元素，以便设置宽度和内边距 */
+    padding: .5625rem 1rem; /* 设置内边距，确保链接内容与边框之间的间距 */
+    width: 100%; /* 链接占据整个父元素的宽度 */
+    color: #4c4948; /* 设置链接的文本颜色为深灰色 */
+    text-shadow: none !important; /* 移除文本阴影效果 */
+  }
+  
+  /* 当鼠标悬停在导航菜单子项的链接上时，设置链接的样式 */
+  /*#nav .menus_items .menus_item .menus_item_child li a:hover {*/
+  /*  !* color: #fff; !important; *! !* 被注释掉的代码：将文本颜色设置为白色 *!*/
+  /*  padding: .125rem 1.25rem; !* 调整内边距，链接使在悬停时看起来更紧凑 *!*/
+  /*  -webkit-transform: scale(1) !important; !* 保持元素的原始大小（Webkit浏览器） *!*/
+  /*  -moz-transform: scale(1) !important; !* 保持元素的原始大小（Firefox浏览器） *!*/
+  /*  -o-transform: scale(1) !important; !* 保持元素的原始大小（Opera浏览器） *!*/
+  /*  -ms-transform: scale(1) !important; !* 保持元素的原始大小（IE浏览器） *!*/
+  /*  transform: scale(1) !important; !* 保持元素的原始大小（标准语法） *!*/
+  /*  !* background: #425aef; !important; *! !* 被注释掉的代码：设置背景颜色为蓝色 *!*/
+  /*  !* -webkit-box-shadow: 0 8px 12px -3px rgba(66, 89, 239, 0.137); *! !* 被注释掉的代码：添加阴影效果（Webkit浏览器） *!*/
+  /*  !* box-shadow: 0 8px 12px -3px rgba(66, 89, 239, 0.137); *! !* 被注释掉的代码：添加阴影效果（标准语法） *!*/
+  /*}*/
+  
+  /********** 鼠标悬停背景颜色 **********/
+  .menus_item_child:hover,
+  div#menus_item:hover,
+  a.site-page.child.faa-parent.animated-hover:hover {
+    background-color: var(--menmoran-beijing) !important; /* 设置元素的背景颜色 */
+    backdrop-filter: var(--menmoran-backdrop-filter) !important; /* 磨砂效果（模糊+饱和度） */
+    transition: background-color 0.3s ease !important; /* 添加（子菜单）过渡效果 */
+  }
+  /********** 手机端菜单栏背景 **********/
+  /* 手机端菜单栏最外层：div#sidebar-menus */
+  div#sidebar-menus {
+    background: var(--menmoran-beijing) !important; /* 夜间模式背景颜色 */
+    backdrop-filter: var(--menmoran-backdrop-filter); /* 磨砂效果（模糊+饱和度） */
+    border: var(--menmoran-border-style); /* 边框装饰线颜色 */
+    border-radius: 15px; /* 圆角 */
+  }
+  /* 手机端菜单栏(首页+文章+社交+关于)背景*/
+  .menus_items {
+    background: var(--menmoran-beijing) !important; /* 夜间模式背景颜色 */
+    backdrop-filter: var(--menmoran-backdrop-filter); /* 磨砂效果（模糊+饱和度） */
+    border-radius: 20px !important; /* 圆角 */
+  }
+  /* 手机端菜单栏（头像下面，文章+标签+分类）*/
+  .site-data {
+    font-size: 16px; /* 图标大小 */
+    line-height: 40px; /* 图标上下调节 */
+    color: var(--menmoran-white); /* 调整（导航栏文字）颜色 */
+    background: var(--menmoran-beijing) !important; /* 背景颜色 */
+  }
+  /* 手机端菜单栏 鼠标悬停透明背景*/
+  #sidebar-menus .menus_items .menus_item a.site-page.faa-parent.animated-hover:hover {
+    background-color: var(--menmoran-beijing) !important;
+  }
+  
+  /************************ 标签外挂背景颜色 ************************/
+  #post .container.post-content .folding-tag, #post .container.post-content .folding-tag .content, #post .container.post-content .folding-tag .content, summary {
+    background-color: var(--menmoran-beijing) !important;
+    transition: background-color 0.3s ease; /* 添加过渡效果 */
+    color: var(--menmoran-waigua) !important;
+  }
+  
+  #post .container.post-content .folding-tag:hover {
+    box-shadow: var(--menmoran-shadow-border) !important; /* 添加阴影效果 */
+  }
+  
+  /************************ 阅读模式 ************************/
+  /*[data-theme="light"] .read-mode #aside-content .card-widget,*/
+  /*[data-theme="light"] .read-mode div#post {*/
+  /*  background: rgba(158, 204, 171, 0.5) !important;*/
+  /*}*/
+  
+  /*!* 夜间模式下的阅读模式 *!*/
+  /*[data-theme="dark"] .read-mode #aside-content .card-widget,*/
+  /*[data-theme="dark"] .read-mode div#post {*/
+  /*  background: rgba(25, 25, 25, 0.2) !important;*/
+  /*  color: #ffffff;*/
+  /*}*/
+  
+  /*************************** 右下角按钮美化 ************************/
+  #to_comment .fas.fa-comments, /* 右下角明暗模式，评论 */
+  #rightside > div > button, /* 右下角明暗模式，菜单 */
+  #rightside > div > a {
+    display: block;
+    margin-bottom: 5px; /*间距*/
+    width: 42px; /*左右边框大小*/
+    height: 42px; /*上下边框大小*/
+    border-radius: 26px; /*圆角大小*/
+    /*background-color: #ffffff; !*背景颜色*!*/
+    text-align: center;
+    font-size: 19px; /*图标大小*/
+    line-height: 42px; /*图标上下调节*/
+    color: var(--menmoran-hangneidaima); /*图标颜色*/
+  }
+  
+  /************************ 首页标题美化 ************************/
+  /* 设置（首页标题）字体大小、颜色、行高等 */
+  #post-info .post-title {
+    color: var(--menmoran-white); /* 首页标题（文字）颜色 */
+    font-weight: normal;
+    font-size: 2.0em; /* 首页标题（文字）大小 */
+    line-height: 1.5; /* 首页标题（与副标题）间距大小 */
+    letter-spacing: 0px; /* 首页标题（字符）间距大小 */
+    word-spacing: 0px; /* 首页标题（单词）间距 */
+    /* 以下属性配合实现多行文本溢出显示省略号 */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  [data-theme="dark"] #post-info .post-title {
+    color: var(--menmoran-white); /* 首页标题（文字）颜色 */
+  }
+  /* 设置（首页副标题）字体大小、颜色、行高等 */
+  #post-meta .meta-firstline, #post-meta .meta-secondline {
+    color: var(--menmoran-white); /* 首页副标题（文字）颜色 */
+    font-weight: normal;
+    font-size: 1.2em; /* 首页副标题（文字）大小 */
+    line-height: 1.5; /* 首页副标题（与标题）间距大小 */
+    letter-spacing: 0px; /* 首页副标题（字符）间距大小 */
+  }
+  
+  /******************** 文章toc目录美化 ********************/
+  /* 侧边栏内容区域中的目录卡片内容样式 */
+  #aside-content #card-toc .toc-content {
+    margin: 8px 0px; /* 设置内边距和外边距 */
+  }
+  /* 目录卡片内容 目录样式 */
+  #aside-content #card-toc .toc-content .toc-link {
+    line-height: 1.2; /* 设置行高 */
+    padding: 3px; /* 设置内边距 */
+    border-left: 0px solid #88000000; /* 设置左边框 */
+    border-radius: 19px; /* 设置圆角边框 */
+    font-size: 15px; /* 设置字体大小 */
+  }
+  
+  /********* 非活性目录样式 *********/
+  #aside-content #card-toc .toc-content .toc-link {
+    color: var(--menmoran-white); /* 日间模式（目录卡片内容）文字颜色 */
+  }
+  
+  #aside-content #card-toc:hover .toc-content .toc-link:not(.active) span {
+    filter: blur(0px); /* 悬停时 移除模糊效果 */
+    opacity: 1; /* 悬停时 设置完全不透明 */
+  }
+  #aside-content #card-toc .toc-content .toc-link:not(.active) span {
+    opacity: 0.6; /* 目录卡片内容设置(半透明) */
+    filter: blur(0.9px); /* 目录卡片内容设置(轻微模糊)效果 */
+    transition: 0.3s; /* 目录卡片内容设置(过渡效果) */
+  }
+  
+  /********* 活性目录状态样式 *********/
+  /* 鼠标悬停样式 */
+  #aside-content #card-toc .toc-content .toc-link:not(.active) span:hover {
+    line-height: 2.2; /* 设置行高 */
+    border-radius: 5px; /* 悬停时 圆角边框 */
+    background-color: var(--menmoran-beijing); /* 悬停时 背景颜色 */
+    color: var(--menmoran-hangneidaima) ; /*  悬停时 文字颜色 */
+    font-weight: bold; /* 设置字体加粗 */
+    font-size: 18px; /* 悬停时 字体大小 */
+  }
+  
+  /* 浏览到该目录时的样式*/
+  #aside-content #card-toc .toc-content .toc-link.active {
+    line-height: 2.8; /* 设置行高 */
+    border-radius: 5px; /* 设置圆角边框 */
+    color: var(--menmoran-hangneidaima) ; /*  浏览到该目录时 文字颜色 */
+    background-color: var(--menmoran-beijing); /* 浏览到该目录时 边框背景颜色 */
+    font-weight: bold; /* 设置字体加粗 */
+    font-size: 22px; /* 设置字体大小 */
+  }
+  
+  #aside-content #card-toc .toc-content .toc-item.active .toc-link {
+    opacity: 1; /* 内容中活性目录，设置不透明度 */
+    border-radius: 15px; /* 内容中活性目录，设置圆角边框 */
+  }
+  /******************************** 全局超链接颜色 *****************************/
+  /********* 全局超链接颜色 *********/
+  #article-container a {
+    color: var(--menmoran-hangneidaima) ; /* 默认颜色 */
+  }
+  #article-container a:hover {
+    color: var(--menmoran-hangneidaima) ; /* 悬停颜色 */
+    text-decoration: underline ; /* 强制添加下划线 */
+  }
+  
+  /******************** 首页文章标题美化 **********************/
+  /* 首页文章标题居中显示 */
+  .article-title {
+    text-align: center; /* 首页文章标题居中显示 */
+    letter-spacing: 0px; /* 首页文章标题（字符）间距大小 */
+    word-spacing: 0px; /* 首页文章标题（单词）间距 */
+  }
+  .article-title:hover {
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+  }
+  
+  /*!********* 文章卡片尺寸调整 *********!*/
+  /*#recent-posts .recent-post-item {*/
+  /*  width: 99%; !* 宽度为父容器的 80% *!*/
+  /*  height: 360vh; !* 高度为视口高度的 30% *!*/
+  /*  max-width: 1600px; !* 最大宽度限制 *!*/
+  /*  max-height: 300px; !* 最大高度限制 *!*/
+  /*}*/
+  
+  /********************** 鼠标悬停时元素美化 **********************/
+  /********** 鼠标悬停时边框装饰线（颜色） **********/
+  .container img:hover, /* 文章图片圆角 */
+  blockquote:hover, /* 引用标签美化 */
+  #rightside > div > button:hover, /* 右下角明暗模式，菜单 */
+  #to_comment .fas.fa-comments:hover, /* 右下角明暗模式，评论 */
+  .icon-V.hidden:hover, /*右下角快捷菜单*/
+  #go-down:hover, /*右下角快捷菜单*/
+  #go-up:hover, /*右下角快捷菜单*/
+  #hide-aside-btn:hover, /*右下角快捷菜单*/
+  #rightside-config:hover, /*右下角快捷菜单*/
+  .aplayer.aplayer-fixed .aplayer-body:hover, /* 音乐播放器 */
+  .tk-submit-action-icon:hover, /* 评论表情：.tk-submit-action-icon */
+  .el-button.tk-send.el-button--primary.el-button--small.is-disabled:hover, /* 评论发送 */
+  .el-button.tk-preview.el-button--default.el-button--small:hover, /* 评论预览 */
+  #twikoo .tk-comments .tk-submit .tk-row .tk-col .tk-input.el-textarea .el-textarea__inner:hover, /* 评论输入框：.tk-input.el-textarea */
+  .el-input.el-input--small.el-input-group.el-input-group--prepend:hover, /* 评论邮箱+用户名 */
+  #pagination .page-number:hover, /* 文章分页2 */
+  #pagination .extend.next:hover, /* 文章分页1 */
+  .pagination-related:hover, /* 相关推荐 */
+  #pagination .pagination-related:hover, /* 下一篇文章 */
+  .highlight:hover, /* 代码框 */
+  .search-dialog:hover, /* 搜索框1 */
+  .local-search-box--input:hover, /* 搜索框2 */
+  #tag:hover, /* 标签子页面卡片 */
+  #category:hover, /* 分类子页面卡片 */
+  #recent-posts .recent-post-item:hover, /* 首页文章卡片 */
+  #aside-content .card-widget:hover, /* 首页侧栏卡片 */
+  div#post:hover, /* 文章页卡片 */
+  div#page:hover, /* 普通页卡片*/  /* 归档页卡片：div#archive */
+  div#archive:hover {
+    box-shadow: var(--menmoran-shadow-border) !important; /* 添加阴影效果 */
+  }
+  
+  /********** 鼠标悬浮（字体阴影）效果 **********/
+  /* 首页文章标题：.article-title */
+  .menus_item:hover, /*导航栏（主菜单）文字图标*/
+  .site-name:hover, /* 导航栏菜单 */
+  .tag-cloud-list a:hover, /* 便签卡片 */
+  .site-data .headline:hover, /* 侧边栏-头像卡片 */
+  .aside-list-item .title:hover, /* 侧边栏-最近文章 */
+  .card-category-list-name:hover, /* 侧边栏-分类 */
+  .card-tag-cloud a:hover, /* 侧边栏-标签云 */
+  #article-container a:hover, /* 全局超链接 */
+  .article-title:hover {
+    text-shadow: var(--menmoran-text-shadow) !important; /* 直接定义阴影效果 */
+  }
+  
+  /********* 鼠标悬停时（元素放大）效果 *********/
+  #rightside > div > a:hover,
+  #rightside > div > button:hover, /* 右下角明暗模式，菜单 */
+  #to_comment .fas.fa-comments:hover, /* 右下角明暗模式，评论 */
+  #pagination .page-number:hover, /* 文章分页按钮1 */
+  #pagination .extend.next:hover, /* 文章分页按钮2 */
+  .site-data .headline:hover, /* 侧边栏-头像卡片 */
+  .aside-list-item .title:hover, /* 侧边栏-最近文章 */
+  .card-tag-cloud a:hover, /* 侧边栏-标签云 */
+  .card-category-list-name:hover, /* 侧边栏-分类 */
+  .icon-V.hidden:hover, /*右下角快捷菜单*/
+  #go-down:hover, /*右下角快捷菜单*/
+  #go-up:hover, /*右下角快捷菜单*/
+  #hide-aside-btn:hover, /*右下角快捷菜单,下面的#rightside-config也是*/
+  #rightside-config:hover {
+    transform: scale(1.2); /* 鼠标悬停时放大效果 */
+    transition: transform 0.3s ease;
+  }
+  
+  /*********************** 引用标签美化 **************************/
+  blockquote {
+    border-left: 8px solid var(--menmoran-hangneidaima); /* 左边框 */
+    padding: 0px 16px; /* 内边距 */
+    font-size: 15px; /* 减小字体大小 */
+    margin: 18px 0px; /* 外边距 */
+    /*font-style: italic; !* 斜体字 *!*/
+    border-radius: 15px; /* 圆角 */
+    background-color: var(--menmoran-beijing); /* 夜间模式背景颜色 */
+    backdrop-filter: var(--menmoran-backdrop-filter); /* 磨砂效果（模糊+饱和度） */
+  }
+  
+  blockquote p {
+    margin: 1px 1; /* 减少上下外边距 */
+    padding: 10px 0; /* 减少上下内边距 */
+    line-height: 2; /* 减小行高 */
+  }
+  
+  blockquote p:first-child {
+    margin-top: 0; /* 第一个段落的顶部外边距为0 */
+  }
+  
+  blockquote p:last-child {
+    margin-bottom: 0; /* 最后一个段落的底部外边距为0 */
+  }
+  
+  /*********************** 修改分类卡片布局 **************************/
+  li.card-archive-list-item,li.card-category-list-item {
+    width: 100%;
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -o-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex: 0 0 48%;
+    -ms-flex: 0 0 48%;
+    flex: 0 0 48%
+  }
+  
+  #aside-content .card-archives ul.card-archive-list>.card-archive-list-item a:hover,#aside-content .card-categories ul.card-category-list>.card-category-list-item a:hover {
+    color: var(--menmoran-hangneidaima); /* 鼠标悬停，文字颜色*/
+    background-color: var(--menmoran-beijing) !important; /* 鼠标悬停，卡片背景颜色*/
+    border-radius: 8px;
+    border: 1px solid var(--menmoran-shadow-border) !important; /* 添加阴影效果 */ /* 鼠标悬停，边框轮廓颜色*/
+  }
+  
+  @media screen and (min-width: 1200px) {
+    #aside-content .card-archives ul.card-archive-list>.card-archive-list-item a:active,#aside-content .card-categories ul.card-category-list>.card-category-list-item a:active {
+      -webkit-transform:scale(.97);
+      -moz-transform: scale(.97);
+      -o-transform: scale(.97);
+      -ms-transform: scale(.97);
+      transform: scale(.97)
+    }
+  }
+  
+  #aside-content .card-archives ul.card-archive-list>.card-archive-list-item a,#aside-content .card-categories ul.card-category-list>.card-category-list-item a {
+    border-radius: 8px;
+    margin: 4px 0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -o-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-line-pack: justify;
+    -webkit-align-content: space-between;
+    align-content: space-between;
+    border:  1px solid #e3e8f7;
+  }
+  
+  #aside-content .card-archives ul.card-archive-list>.card-archive-list-item a span:first-child,#aside-content .card-categories ul.card-category-list>.card-category-list-item a span:first-child {
+    width: auto;
+    -webkit-box-flex: inherit;
+    -moz-box-flex: inherit;
+    -o-box-flex: inherit;
+    box-flex: inherit;
+    -webkit-flex: inherit;
+    -ms-flex: inherit;
+    flex: inherit
+  }
+  
+  #aside-content .card-archives ul.card-archive-list,#aside-content .card-categories ul.card-category-list {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -o-box-orient: horizontal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    -moz-box-pack: justify;
+    -o-box-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-box-lines: multiple;
+    -moz-box-lines: multiple;
+    -o-box-lines: multiple;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap
+  }
+  
+  /********** 搜索框美化 **********/
+  .local-search-box--input {
+    height: 50px; /* 或者使用其他单位，例如 height: 2.5rem; */
+    font-size: 18px; /* 文字大小 */
+    outline: none; /* 去掉聚焦时的默认边框 */
+    transition: all 0.3s ease; /* 添加过渡效果，使变化更平滑 */
+  }
+  hr {
+    display: none; /* 隐藏搜索框下面的分割线 */
+  }
+  
+  /********** 明暗模式+搜索按钮（大小上下调节） **********/
+  .site-page.social-icon.search .faa-tada.icon {
+    height: 40px !important;  /* 高度和宽度 */ /* 搜索按钮 */
+    width: 40px !important;   /* 高度和宽度 */
+    margin-top: 7px !important;    /* 向下移动10px */
+    margin-left: 2px !important;   /* 向右移动10px */
+    /* 或者 */
+    margin-bottom: 0px !important; /* 向上移动10px */
+    margin-right: 8px !important;  /* 向左移动10px */
+  }
+  .sun_moon.faa-parent.animated-hover .faa-tada {
+    height: 32px !important;  /* 高度和宽度 */  /* 明暗模式按钮 */
+    width: 32px !important;   /* 高度和宽度 */
+    margin-top: 0px !important;    /* 向下移动10px */
+    margin-left: 0px !important;   /* 向右移动10px */
+    /* 或者 */
+    margin-bottom: 1px !important; /* 向上移动10px */
+    margin-right: 4px !important;  /* 向左移动10px */
+  }
+  #toggle-menu .site-page .site-page.faa-parent.animated-hover .faa-tada {
+    height: 30px !important;  /* 高度和宽度 */ /* 手机端菜单按钮 */
+    width: 30px !important;   /* 高度和宽度 */
+    margin-top: 9px !important;    /* 向下移动10px */
+    margin-left: 0px !important;   /* 向右移动10px */
+    /* 或者 */
+    margin-bottom: 0px !important; /* 向上移动10px */
+    margin-right: 0px !important;  /* 向左移动10px */
+  }
+  /**************************** 页面美化 **********************************/
+
+
+  
